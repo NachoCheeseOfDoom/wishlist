@@ -11,10 +11,16 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  items = [
+  items: WishItem[] = [
     new WishItem('Learn to be cool.'),
     new WishItem('Drink coffee.', true),
     new WishItem('Find a job that pays well.'),
   ];
   title = 'wishlist';
+
+  toggleItem(item: WishItem) {
+    item.isComplete = !item.isComplete;
+    console.log(item.isComplete);
+  }
+
 }

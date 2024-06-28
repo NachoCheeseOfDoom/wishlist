@@ -8,16 +8,29 @@
 </head>
 
 <body>
+  <div class="container">
 
-  <div class="container"></div>
-  <div class="wish-list">
-    <li *ngFor="let item of items" class="list-group-item pill">
-      <div class="form-check ">
-        <label for="" class="form-check-label">
-          <input class="checkbox" type="checkbox" name="" id=""> {{item.wishText}}
-        </label>
+    <div *ngIf="items.length > 0; then showItems  else  noItems"></div>
+
+    <ng-template #noItems>
+      <h2>No items in list</h2>
+    </ng-template>
+
+    <ng-template #showItems>
+      <div class="wish-list">
+        <li *ngFor="let item of items; index as ii" class="list-group-item pill">
+          <div class="form-check ">
+            <label for="" class="form-check-label">
+              <input class="checkbox" type="checkbox" [attr.data-index]="ii" [checked]="item.isComplete"
+                (click)="toggleItem(item)" name="" id="">
+              {{item.wishText}}
+            </label>
+          </div>
+        </li>
       </div>
-    </li>
+    </ng-template>
+
+
   </div>
 </body>
 
