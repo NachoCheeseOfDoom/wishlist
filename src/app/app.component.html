@@ -10,26 +10,19 @@
 <body>
   <div class="container">
 
-    <div *ngIf="items.length > 0; then showItems  else  noItems"></div>
+    <app-add-wish-form (addWish)="items.push($event)">
+    </app-add-wish-form>
 
-    <ng-template #noItems>
-      <h2>No items in list</h2>
-    </ng-template>
+    <div class="row mt-4">
+      <app-wish-filter [(filter)]="filter">
+      </app-wish-filter>
+    </div>
 
-    <ng-template #showItems>
-      <div class="wish-list">
-        <li *ngFor="let item of items; index as ii" class="list-group-item pill">
-          <div class="form-check ">
-            <label for="" class="form-check-label">
-              <input class="checkbox" type="checkbox" [attr.data-index]="ii" [checked]="item.isComplete"
-                (click)="toggleItem(item)" name="" id="">
-              {{item.wishText}}
-            </label>
-          </div>
-        </li>
+    <div class="row mt-3">
+      <div class="col-sm-6">
+        <app-wish-list [wishes]="items.filter(filter)"></app-wish-list>
       </div>
-    </ng-template>
-
+    </div>
 
   </div>
 </body>

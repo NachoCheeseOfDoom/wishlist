@@ -1,0 +1,11 @@
+<li class="d-flex justify-content-between list-group-item">
+    <div class="form-check ">
+        <label class="form-check-label" [ngClass]="cssClasses">
+            <input class="checkbox" type="checkbox" [checked]="fulfilled" (click)="toggleFulfilled()" name="" id="">
+            {{wishText}}
+        </label>
+    </div>
+    <div>
+        <button type="button" class="btn-close" (click)="removeWish()"></button>
+    </div>
+</li>

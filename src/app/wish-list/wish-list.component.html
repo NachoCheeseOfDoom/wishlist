@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div *ngIf="wishes.length > 0; then showItems  else  noItems"></div>
+    <ng-template #noItems>
+        <h3 class="h4">No items in list</h3>
+    </ng-template>
+
+    <ng-template #showItems>
+
+        <div class="wish-list">
+            <app-wish-list-item *ngFor="let wish of wishes" [wishText]="wish.wishText" [(fulfilled)]="wish.isComplete">
+            </app-wish-list-item>
+        </div>
+    </ng-template>
+
+</body>
+
+</html>
